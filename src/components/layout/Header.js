@@ -1,28 +1,21 @@
-import React from 'react';
-import Container from '../ui/Container';
+import Container from '@/components/ui/Container';
+import Link from 'next/link';
 
-const Header = ({ navItems }) => {
+export default function Header({ navItems = [] }) {
   return (
-    <header className="sticky top-0 bg-white shadow-md">
-      <Container className="flex items-center justify-between h-16">
-        {/* Logo Placeholder */}
-        <div className="text-xl font-bold">Logo</div>
-
-        {/* Navigation Links */}
+    <header className="sticky top-0 bg-white shadow-md z-50">
+      <Container className="flex justify-between items-center py-4">
+        <Link href="/" className="font-bold text-2xl">
+          Finance Advisor
+        </Link>
         <nav>
-          <ul className="flex space-x-4">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a href={item.href} className="text-gray-600 hover:text-gray-900">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {navItems.map(item => (
+            <Link key={item.label} href={item.href} className="ml-6 font-semibold text-gray-600 hover:text-gray-900">
+              {item.label}
+            </Link>
+          ))}
         </nav>
       </Container>
     </header>
   );
-};
-
-export default Header;
+}

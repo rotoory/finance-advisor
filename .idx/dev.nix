@@ -9,6 +9,7 @@
     pkgs.tailwindcss
     pkgs.nodePackages.postcss-cli
     pkgs.nodePackages.autoprefixer
+    pkgs.gh
   ];
   # Sets environment variables in the workspace
   env = {};

@@ -1,20 +1,15 @@
-import React from 'react';
+import Link from 'next/link';
 
-const Button = ({ children, href, variant = 'primary', className }) => {
-  const baseStyles = 'inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm';
-
-  const variants = {
-    primary: 'text-white bg-indigo-600 hover:bg-indigo-700',
-    secondary: 'text-indigo-700 bg-indigo-100 hover:bg-indigo-200',
+export default function Button({ children, href, variant = 'primary' }) {
+  const baseStyle = 'inline-block px-8 py-3 text-lg font-semibold rounded-md text-center transition-colors';
+  const styles = {
+    primary: 'bg-blue-600 text-white hover:bg-blue-700',
+    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
   };
 
-  const buttonClasses = `${baseStyles} ${variants[variant]} ${className || ''}`;
-
   return (
-    <a href={href} className={buttonClasses}>
+    <Link href={href} className={`${baseStyle} ${styles[variant]}`}>
       {children}
-    </a>
+    </Link>
   );
-};
-
-export default Button;
+}

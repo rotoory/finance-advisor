@@ -1,16 +1,22 @@
-import { InlineWidget } from "react-calendly";
-import Container from "../ui/Container";
+import Container from '@/components/ui/Container';
+import { InlineWidget } from 'react-calendly';
 
-const SchedulingSection = () => {
+const SchedulingSection = ({ title }) => {
+  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+
   return (
-    <section id="schedule" className="relative bg-gray-100 py-20">
-      <Container className="text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-12">
-          Book Your Free Consultation
+    <section id="schedule" className="py-20">
+      <Container>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+          {title}
         </h2>
-        <div className="calendly-widget-container" style={{ height: '700px' }}>
-          <InlineWidget url={process.env.NEXT_PUBLIC_CALENDLY_URL} />
-        </div>
+        {calendlyUrl ? (
+          <InlineWidget url={calendlyUrl} style={{ height: '1000px' }} />
+        ) : (
+          <p className="text-center text-red-600">
+            Calendly scheduling is currently unavailable. Please try again later.
+          </p>
+        )}
       </Container>
     </section>
   );
