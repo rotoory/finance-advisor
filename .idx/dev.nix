@@ -8,8 +8,11 @@
     # pkgs.go
     # pkgs.python311
     # pkgs.python311Packages.pip
-    # pkgs.nodejs_20
+    pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
+    pkgs.tailwindcss
+    pkgs.postcss
+    pkgs.autoprefixer
   ];
   # Sets environment variables in the workspace
   env = {};
